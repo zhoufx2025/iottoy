@@ -17,6 +17,7 @@
 | 1.4  | 控制协调系统 |                                                                     |
 
 ## 1.大纲
+<img src="https://github.com/zhoufx2025/iottoy/blob/13d294c89953860bd02cdf57438b295ad03737a4/blob/main/img/1_outline.jpg"  alt="大纲">
 
 ## 2.硬件组成
 
