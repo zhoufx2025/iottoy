@@ -1,5 +1,8 @@
 # 物联网小玩具（2025.4.30）
-
+  1.我是新手，从零学习硬件、软件、网络、智能家居、AI 等知识，用此 GitHub 记录学习过程。
+  2.因图片上传受限，故采用 markdown 格式，初用若有不当之处，望多包涵。
+  3.各位前辈，如有宝贵建议，望不吝赐教！
+  
 ## 更新履历（2025.4.30）
 | 序号 | 时间       | 内容                     |
 | ---- | ---------- | ------------------------ |
@@ -18,14 +21,62 @@
 
 ***
 # 1.自动抓取小车（2025.4.30）
-
 ## 大纲（2025.4.30）
   利用树莓派当作控制中枢，同时安装了homeassistant，上接互动设备，下接驱动设备。
-<img src="https://raw.githubusercontent.com/zhoufx2025/iottoy/raw/main/blob/main/img/1_outline.jpg"  width="500" alt="大纲">
+  ### 系统架构图
+  ```mermaid
+  graph TD
+      A[语音控制] --> B[智能中枢]
+      B[智能中枢] --> D[树莓派 5]
+      C[手柄控制] --> D
+      D <--> E[相机]
+      D <-->|I2C 通讯| F[驱动模组]
+      N[7.4V 锂电池] -->|供电| F
+      F -->|供电| D
+      F --> G[4 路电机]
+      F --> H[8 路舵机]
+      G --> I[4 轮差速驱动]
+      H --> J[2 自由度云台]
+      H --> K[6 自由度机械手]
+  ```
 
-## 硬件组成
-### 组成结构及挑选（2025.4.30）ps：兼容性未知还在研究试错中，不断更新
-<img src="https://github.com/zhoufx2025/iottoy/raw/main/blob/main/img/1_hardware.jpg"  height="500" alt="硬件组成结构"><img src="https://github.com/zhoufx2025/iottoy/raw/main/blob/main/img/1_hardware_select.png"  height="500" alt="硬件挑选">
+## 硬件组成（2025.4.30）
+  ### 组成结构及挑选（2025.4.30）ps：兼容性未知还在研究试错中，不断更新
+  ```mermaid
+  graph TD
+      A[上位系统] <-->|TCP/IP| B[WI-FI模块]
+      B <-->|USB 连接| C[树莓派5]
+      C <-->|USB 连接| D[相机模块]
+      C <-->|串口通讯| E[机械臂Arduino]
+      C <-->|I2C 通讯| G[多功能驱动板]
+      G -->|typeC供电| C
+      H[7.4v电池] -->|pin| E
+      H -->|pin| G
+      G --> I[4 路电机]
+      G --> J[2 路舵机]
+      I --> K[TT电机带轮]
+      J --> L[2 自由度云台] 
+  ```
 
-
-## 软件组成
+## 软件组成（2025.4.30）
+  ```mermaid
+  graph TD
+      A[homekit] <--> B[homeAssistant-docker]
+      C[xiaomihome] <--> B
+      subgraph 智能适配
+          A
+          C
+      end
+      subgraph 树莓派5
+          B <--> D[Ubuntu24.04-ros]
+          D <--> E[相机控制]
+      end
+      D <--> F[夹取控制]
+      D <--> G[行走控制]
+      subgraph Arduino
+          F
+      end
+      subgraph STC微控
+          G
+      end
+  ```
