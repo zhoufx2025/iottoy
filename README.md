@@ -1,4 +1,4 @@
-# 物联网小玩具
+# 物联网小玩具（2025.4.30）
 
 ## 更新履历（2025.4.30）
 | 序号 | 时间       | 内容                     |
@@ -16,9 +16,16 @@
 | 1.3  | 相机系统     |                                                                     |
 | 1.4  | 控制协调系统 |                                                                     |
 
-## 1.大纲
-<img src="https://github.com/zhoufx2025/iottoy/blob/13d294c89953860bd02cdf57438b295ad03737a4/blob/main/img/1_outline.jpg"  alt="大纲">
+***
+# 1.自动抓取小车（2025.4.30）
 
-## 2.硬件组成
+## 大纲（2025.4.30）
+  利用树莓派当作控制中枢，同时安装了homeassistant，上接互动设备，下接驱动设备。
+<img src="https://raw.githubusercontent.com/zhoufx2025/iottoy/raw/main/blob/main/img/1_outline.jpg"  width="500" alt="大纲">
 
-## 3.软件组成
+## 硬件组成
+### 组成结构及挑选（2025.4.30）ps：兼容性未知还在研究试错中，不断更新
+<img src="https://github.com/zhoufx2025/iottoy/raw/main/blob/main/img/1_hardware.jpg"  height="500" alt="硬件组成结构"><img src="https://github.com/zhoufx2025/iottoy/raw/main/blob/main/img/1_hardware_select.png"  height="500" alt="硬件挑选">
+
+
+## 软件组成
