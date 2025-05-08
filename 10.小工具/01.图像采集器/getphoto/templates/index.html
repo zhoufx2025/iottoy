@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>摄像头实时查看</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .camera-container {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        #camera-stream {
+            max-width: 100%;
+            border: 1px solid #ccc;
+        }
+        .controls {
+            margin-top: 20px;
+            text-align: center;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <h1>摄像头实时查看</h1>
+    <div class="camera-container">
+        <img id="camera-stream" src="/video_feed" alt="摄像头流">
+    </div>
+    
+    <div class="controls">
+ <p>按Q键拍照，或点击下方按钮拍照</p>
+        <button onclick="takePhoto()">拍照</button>
+    </div>
+    
+    <script>
+        function takePhoto() {
+            // 发送拍照请求
+            fetch('/take_photo')
+                .then(response => response.text())
+                .then(data => {
+                    alert(data);
+                })
+                .catch(error => {  // 修正了 catch 的语法
+                    console.error('拍照错误:', error);
+                });
+        }
+    </script>
+</body>
+</html>
